@@ -7,7 +7,7 @@
     <base href="">
     <meta charset="utf-8" />
     <title>Lucie Wang</title>
-    <meta http-equiv="Accept-CH" content="Sec-CH-UA-Platform-Version, Sec-CH-UA-Model" /><link rel="icon" type="image/x-icon" href="/about/avatar.jpg"/>
+    <meta http-equiv="Accept-CH" content="Sec-CH-UA-  Platform-Version, Sec-CH-UA-Model" /><link rel="icon" type="image/x-icon" href="/about/avatar.jpg"/>
     <link rel="canonical" href="https://byluciewang.github.io"/>
     <meta property="og:site_name" content="Lucie Wang"/>
     <meta property="og:title" content="Lucie Wang"/>
@@ -44,10 +44,10 @@
 </svg>
   <div class="space"></div>
   <div class="topbar-links">
-    <div class="topbar-link active-link">About</div>
-    <div class="topbar-link">Resume</div>
-    <div class="topbar-link">Gallery</div>
-    <div class="topbar-link">Links</div>
+    <div class="topbar-link active-link" onclick="window.location='/'">About</div>
+    <div class="topbar-link"             onclick="window.location='/resume.html'">Resume</div>
+    <div class="topbar-link"             onclick="window.location='/gallery.html'" >Gallery</div>
+    <div class="topbar-link"             onclick="window.location='/links.html'">Links</div>
   </div>
 </div>
 <div class="topbar-mobile">
@@ -103,42 +103,42 @@
 <div class="bottom-space"></div>
 </body>
 <script>
+  // Topbar logo animation 
   function setTextAnimation(delay, duration, strokeWidth, timingFunction, strokeColor,repeat) {
-            let paths = document.querySelectorAll("path");
-            let mode=repeat?'infinite':'forwards'
-            for (let i = 0; i < paths.length; i++) {
-                const path = paths[i];
-                const length = path.getTotalLength();
-                path.style["stroke-dashoffset"] = `${length}px`;
-                path.style["stroke-dasharray"] = `${length}px`;
-                path.style["stroke-width"] = `${strokeWidth}px`;
-                path.style["stroke"] = `${strokeColor}`;
-                path.style["animation"] = `${duration}s svg-text-anim ${mode} ${timingFunction}`;
-                path.style["animation-delay"] = `${i * delay}s`;
-            }
-        }
+    let paths = document.querySelectorAll("path");
+    let mode=repeat?'infinite':'forwards'
+    for (let i = 0; i < paths.length; i++) {
+      const path = paths[i];
+      const length = path.getTotalLength();
+      path.style["stroke-dashoffset"] = `${length}px`;
+      path.style["stroke-dasharray"] = `${length}px`;
+      path.style["stroke-width"] = `${strokeWidth}px`;
+      path.style["stroke"] = `${strokeColor}`;
+      path.style["animation"] = `${duration}s svg-text-anim ${mode} ${timingFunction}`;
+      path.style["animation-delay"] = `${i * delay}s`;
+    }
+  }
   document.addEventListener('DOMContentLoaded', function() {
     setTimeout(()=>{
       setTextAnimation(0.1,2.9,1,'linear','#000000',false)
       document.getElementById('svgGroup').style.display = "block"
       document.getElementById('svgGroup2').style.display = "block"
     },1000)
-  });
-
-
-    const navButton = document.getElementById('navbar-button')
-    const closeBtn = document.getElementById('navbar-button')
-    const backdrop = document.getElementById('drawerBackdrop')
-
-    navButton.addEventListener('click', () => {
-      backdrop.classList.toggle('active');
-    });
-
-    backdrop.addEventListener('click', (e) => {
-      backdrop.classList.toggle('active');
-    });
+  })
+  const navButton = document.getElementById('navbar-button')
+  const closeBtn = document.getElementById('navbar-button')
+  const backdrop = document.getElementById('drawerBackdrop')
+  navButton.addEventListener('click', () => {
+    backdrop.classList.toggle('active');
+  })
+  backdrop.addEventListener('click', (e) => {
+    backdrop.classList.toggle('active');
+  })
  </script>
 <style>
+* {
+  box-sizing: border-box;
+}
 :root{
     --base-font-size: 16px;
     --heading-font-font-family: "Poppins";
@@ -307,10 +307,28 @@
   display: none;
   width: calc(100% - 10%);
 }
+/* Drawer panel */
+.drawer {
+  background: #fff;
+  width: 100%;
+  height: calc(100% - 60px); /* fill screen, leave 60px gap */
+  padding: 1.5rem;
+  transform: translateY(100%);
+  transition: transform 1s ease;
+  overflow-y: auto;
+}
+.drawer-backdrop.active {
+  display: flex;
+}
+.drawer-backdrop.active .drawer {
+  transform: translateY(0);
+}
 .space{
   display: block;
   width  : 100%;
 }
+
+
 
 .main{
   display: flex;
@@ -387,22 +405,5 @@
     margin-top: 90px;
     height: calc(100% - 60px); /* fill screen, leave 60px gap */
   }
-
-/* Drawer panel */
-.drawer {
-  background: #fff;
-  width: 100%;
-  height: calc(100% - 60px); /* fill screen, leave 60px gap */
-  padding: 1.5rem;
-  transform: translateY(100%);
-  transition: transform 1s ease;
-  overflow-y: auto;
-}
-.drawer-backdrop.active {
-  display: flex;
-}
-.drawer-backdrop.active .drawer {
-  transform: translateY(0);
-}
 </style>
 </html>
