@@ -7,7 +7,7 @@
     <base href="">
     <meta charset="utf-8" />
     <title>Lucie Wang</title>
-    <meta http-equiv="Accept-CH" content="Sec-CH-UA-Platform-Version, Sec-CH-UA-Model" /><link rel="icon" type="image/x-icon" href="https://byluciewang.github.io/about/avatar.jpg"/>
+    <meta http-equiv="Accept-CH" content="Sec-CH-UA-Platform-Version, Sec-CH-UA-Model" /><link rel="icon" type="image/x-icon" href="/about/avatar.jpg"/>
     <link rel="canonical" href="https://byluciewang.github.io"/>
     <meta property="og:site_name" content="Lucie Wang"/>
     <meta property="og:title" content="Lucie Wang"/>
@@ -26,31 +26,182 @@
 <body> 
 <!-- topbar -->
 <div class="topbar-desktop">
-  <div></div>
-  <div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+  <div class="topbar-name">Lucie Wang</div>
+  <div class="space"></div>
+  <div class="topbar-links">
+    <div class="topbar-link active-link">About</div>
+    <div class="topbar-link">Resume</div>
+    <div class="topbar-link">Gallery</div>
+    <div class="topbar-link">Links</div>
   </div>
 </div>
 <div class="topbar-mobile"></div>
 <!-- grid -->
 <div class="main">
-<div></div>
+<div class="main-image">
+  <img class="main-image-img" style="width:100%;object-fit: contain;" src="/about/avatar.jpg"/>
 </div>
-<!-- avatar --><!-- bio -->
+<div class="main-bio">
+  Lucie Wang is a bilingual multi-hyphenate actor who studied acting at HB Studio and completed The Uta Hagen Institute’s Hagen Summer Intensive in NYC, where she debuted as Lyan Kim in Line of Inquiry at the New York Theatre Festival.<br><br>
+
+  She was a contestant on Japan’s most popular game show, “The Battle of Big Eaters: World Championship,” and ate 1.6 kg/3.3 lbs of food in half an hour. She thinks her mouth is only for enjoying gluttony and hopes to avoid the fate of the man in the movie Seven.<br><br>
+
+  After graduating from Southern Methodist University with a BA in Film and Media Arts, Lucie launched her artistic career by working as an international crew member in the film, TV, and theater industries in China, Taiwan, and Australia.<br><br>
+
+  Fluent in English and Mandarin Chinese, Lucie was born in Taipei and holds a far-flung background, including schooling in Taipei, Gold Coast, Beijing, Shanghai, Honolulu, LA, and Dallas. She views herself as a Pacific fusion cuisine, blending spices like her multicultural perspectives.<br><br>
+</div>
+</div>
+<div class="bottom-space"></div>
 </body>
 <style>
+:root{
+    --base-font-size: 16px;
+    --heading-font-font-family: "Poppins";
+    --heading-font-font-style: normal;
+    --heading-font-font-weight: 500;
+    --heading-font-text-transform: none;
+    --heading-font-letter-spacing: 0em;
+    --heading-font-line-height: 1.4em;
+    --body-font-font-family: "Poppins";
+    --body-font-font-style: normal;
+    --body-font-font-weight: 300;
+    --body-font-text-transform: none;
+    --body-font-letter-spacing: 0em;
+    --body-font-line-height: 1.8em;
+    --meta-font-font-family: "Poppins";
+    --meta-font-font-style: normal;
+    --meta-font-font-weight: 400;
+    --meta-font-text-transform: none;
+    --meta-font-letter-spacing: 0em;
+    --meta-font-line-height: 1.2em;
+    --heading-1-size: 4rem;
+    --heading-1-size-value: 4;
+    --heading-2-size: 2.8rem;
+    --heading-2-size-value: 2.8;
+    --heading-3-size: 2.2rem;
+    --heading-3-size-value: 2.2;
+    --heading-4-size: 1.2rem;
+    --heading-4-size-value: 1.2;
+    --large-text-size: 1.4rem;
+    --large-text-size-value: 1.4;
+    --normal-text-size: 1rem;
+    --normal-text-size-value: 1;
+    --small-text-size: .9rem;
+    --small-text-size-value: .9;
+    --normal-meta-size: 1rem;
+    --normal-meta-size-value: 1;
+}
+ html,body{
+  margin     : 0;
+  padding    : 0px;
+  /* height     : auto!important; */
+  overflow-y : scroll; 
+  overflow-x : hidden;
+  max-width  : 100%;
+  width      : 100%;
+  height     : 100%;
+  font-family: "Poppins";
+  font-weight : 300;
+  color       : var(--font-color);
+  font-size:  : max(0.75rem, 88%);
+}
+.topbar-name{
+  font-size: 1.8rem;
+  font-style: var(--heading-font-font-style);
+  font-weight: 400;
+  letter-spacing: var(--heading-font-letter-spacing);
+  line-height: 1.4em;
+  align-self: center;
+  /* padding: 20px */
+}
 .topbar-desktop{
-
+  display: grid;
+  grid-template-columns: max-content auto max-content;
+  width: calc(100% - 10%);
+  /* top right bottom left */
+  margin: 1.5% 4% 2% 5%;
+}
+.topbar-links{
+  display: flex;
+  /* grid-template-columns: repeat(auto-fit, 100px);  */
+  grid-gap: 10px;
+  /* background-color: red; */
+  align-self: center;
+  font-weight: 50;
+  font-size: 16px;
+  color: hsla(0,0%,0%,1);
+  min-width: 100px;
+  width: calc(max-content + 5%);
+  margin-right: 5%;
+}
+.active-link{
+  border-bottom: 1px solid black;
+}
+.topbar-link{
+  display: inline-block;
+  align-self: left;
+  font-weight: 0;
+  width: min-content;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.topbar-link:hover{
+  opacity: .8;
 }
 .topbar-mobile{
 
 }
+.space{
+  display: block;
+  width  : 100%;
+}
 .main{
-  display: flexbox;
+  display: flex;
+  flex-direction: row;
+  width: calc(100% - 5%);
+  overflow: none;
+  padding: 2% 0% 0% 5%;
+}
+.main-image {
+  display: flex;
+  flex-direction: row;
+  padding: 0 5% 0 0;
+  align-self: start;
+  max-width : 500px;
+}
+.main-bio{
+  padding: 0 5% 0 0;
+  top: 0;
+  padding-top:0;
+  margin-top: -5px;
+  align-self: center;
+  line-height: 28.5px;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Poppins";
+  color: hsla(0,0%,0%,1);
+  /* letter-spacing: 1.001px; */
+}
 
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .main {
+    display: grid;
+    justify-content: center;
+    grid-gap: 20px;
+  }
+  .main-image{
+    display: grid;
+    justify-self: center;
+  }
+  .main-image-img{
+    justify-self: center;
+  }
+}
+.bottom-space{
+  display: block;
+  height: 300px;
+  width: 100%;
 }
 </style>
 </html>
