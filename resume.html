@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="vieawport" content="width=device-width, initial-scale=1">
     <base href="">
     <meta charset="utf-8" />
     <title>Lucie Wang</title>
@@ -84,33 +84,21 @@
 
 
 
-<!-- Photo Grid -->
+
 <div class="row"> 
   <div class="column">
-    <img src="/gallery/1.JPG" style="width:100%"  onload="this.classList.add('loaded')" >
-    <img src="/gallery/2.JPG" style="width:100%"  onload="this.classList.add('loaded')" >
-    <img src="/gallery/11.JPG" style="width:100%" onload="this.classList.add('loaded')" >
+    <img src="/resumepart1.jpg" style="width:100%"  onload="this.classList.add('loaded')" >
   </div>
-   
   <div class="column">
-    <img src="/gallery/10.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/gallery/6.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/gallery/8.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/gallery/12.JPG" style="width:100%" onload="this.classList.add('loaded')" >
+    <img src="/resumept2.png" style="width:100%"  onload="this.classList.add('loaded')" >
   </div>
-  
-  <div class="column">
-    <img src="/gallery/5.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/gallery/4.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/gallery/9.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <!-- <img src="/gallery/7.JPG" style="width:100%"> -->
-  </div> 
 </div>
+
 <div class="bottom-space"></div>
 </body>
 
 <script>
-   /* Copy paste start css here */
+  /* Copy paste start css here */
   const navButton = document.getElementById('navbar-button')
   const closeBtn = document.getElementById('navbar-button')
   const backdrop = document.getElementById('drawerBackdrop')
@@ -343,36 +331,25 @@
 
 
 
-/* Css image grid */
-.header {
-  text-align: center;
-  padding: 32px;
-}
+/* resume */
 .row {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 calc(5% - 8px);
+  padding: 0 2%;
   justify-content: center;
 }
 /* Create four equal columns that sits next to each other */
 .column {
-  flex: 33%;
-  max-width: 33%;
+  flex: 50%;
+  max-width: 50%;
   padding: 0 4px;
 }
 .column img {
   margin-top: 8px;
   vertical-align: middle;
 }
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media (max-width: 800px) {
-  .column {
-    flex: 50%;
-    max-width: 50%;
-  }
-}
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
+@media (max-width: 1400px) {
   .column {
     flex: 100%;
     max-width: 100%;
@@ -385,6 +362,7 @@ img{
 .loaded {
   opacity: 1;
 }
+
 
 </style>
 </html>
