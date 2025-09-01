@@ -124,9 +124,9 @@
   document.addEventListener('DOMContentLoaded', function() {
     setTimeout(()=>{
       setTextAnimation(0.1,2.9,1,'linear','#000000',false)
-      document.getElementById('svgGroup').style.display = "block"
-      document.getElementById('svgGroup2').style.display = "block"
-    },1000)
+      document.getElementById('svgGroup').style.opacity = "1"
+      document.getElementById('svgGroup2').style.opacity = "1"
+    },250)
   })
   const navButton = document.getElementById('navbar-button')
   const closeBtn = document.getElementById('navbar-button')
@@ -195,6 +195,7 @@
   font-weight : 300;
   color       : var(--font-color);
   /* font-size:  : max(0.75rem, 88%); */
+  --webkit-tap-highlight-color: transparent;
 }
 .topbar-name{
   font-size: 1.8rem;
@@ -206,12 +207,12 @@
   /* padding: 20px */
 }
 /* Google chrome */
-/* #svgGroup{
-  display: none;
+#svgGroup{
+  opacity: 0;
 }
 #svgGroup2{
-  display: none;
-} */
+  opacity: 0;
+} 
 @-webkit-keyframes svg-text-anim {
     40% {
       stroke-dashoffset: 0;
@@ -408,6 +409,9 @@
     display: grid;
     justify-content: center;
     grid-gap: 40px;
+  }
+  .main-bio{
+    padding:0;
   }
   .main-image{
     display: grid;
