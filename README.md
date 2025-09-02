@@ -37,3 +37,4 @@ ssh -R 80:localhost:8000 nokey@localhost.run
 ### References
 - [Great tool for name animations](https://akashraj9828.github.io/svg-text-animation-generator/)
 - [Inpsiration for this website](https://www.jomei.com)
+- [hamburger css](https://jonsuh.com/hamburgers/)/[github code](https://github.com/jonsuh/hamburgers)
