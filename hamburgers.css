@@ -5,9 +5,18 @@
  * @site https://jonsuh.com/hamburgers
  * @link https://github.com/jonsuh/hamburgers
  */
+ * {
+  -webkit-tap-highlight-color: transparent;
+}
 button, div {
   -webkit-user-select: none; /* optional: prevent text selection */
   -webkit-touch-callout: none; /* prevent long-press menu */
+  --webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  background: none;
+}
+button:active, div:active {
+  background-color: none; /* your own tap effect */
 }
 .hamburger {
   padding: 15px 0px;
@@ -23,7 +32,6 @@ button, div {
   border: 0;
   margin: 0;
   overflow: visible; 
-  --webkit-tap-highlight-color: transparent;
 }
   .hamburger:hover {
     opacity: 0.7; }
