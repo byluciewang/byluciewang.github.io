@@ -5,6 +5,28 @@ Lucie Wangs website
 1. reduce size of images, dynamically load images, to reduce loadtime
 2. turn into web components to reduce loading time and simplify - single page application in vanilla
 3. fix links page
+4. fix up the resume, and topbar - top bar will be fixed wiht componentizition
+
+### Compoent plan
+1. mainpage = 404.html
+2. nabvar and links component
+   1. hamburger menu component
+3. Gallery Page
+   1. gallery component
+4. Links Page
+5. Resume Page
+
+### Planned dir
+- images
+  - ...
+- components
+  - utilities
+  - pages
+- index.html
+- 404.html
+- README.md
+- reduce images size script
+- devscriptwith auto reload?
 
 ### Testing locally
 ```bash
