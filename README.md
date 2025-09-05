@@ -14,6 +14,7 @@ Lucie Wangs website
 3. Gallery Page
    1. gallery component
 4. Links Page
+   1. Email me form
 5. Resume Page
 
 ### Planned dir
@@ -38,3 +39,4 @@ ssh -R 80:localhost:8000 nokey@localhost.run
 - [Great tool for name animations](https://akashraj9828.github.io/svg-text-animation-generator/)
 - [Inpsiration for this website](https://www.jomei.com)
 - [hamburger css](https://jonsuh.com/hamburgers/)/[github code](https://github.com/jonsuh/hamburgers)
+- [Optioanl email me form service](https://formspree.io/plans), free up to 50/month

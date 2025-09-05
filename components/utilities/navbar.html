@@ -1,31 +1,5 @@
-<!doctype html>
-<html xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" lang="en-US"  >
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <base href="">
-    <meta charset="utf-8" />
-    <title>Lucie Wang</title>
-    <meta http-equiv="Accept-CH" content="Sec-CH-UA-  Platform-Version, Sec-CH-UA-Model" /><link rel="icon" type="image/x-icon" href="/about/avatar.jpg"/>
-    <link rel="canonical" href="https://byluciewang.github.io"/>
-    <meta property="og:site_name" content="Lucie Wang"/>
-    <meta property="og:title" content="Lucie Wang"/>
-    <meta property="og:url" content="https://byluciewang.github.io"/>
-    <meta property="og:type" content="website"/>
-    <meta itemprop="name" content="Lucie Wang"/>
-    <meta itemprop="url" content="https://byluciewang.github.io"/>
-    <meta name="twitter:title" content="Lucie Wang"/>
-    <meta name="twitter:url" content="https://byluciewang.github.io"/>
-    <meta name="twitter:card" content="summary"/>
-    <meta name="description" content="" />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700">
    <!-- Hamburger -->
-    <link href="/hamburgers.css" rel="stylesheet">
-</head>
-<body> 
-<!-- COPY PASTE START HERE -->
+    <link href="/assets/hamburgers.css" rel="stylesheet">
 <!-- topbar -->
 <div class="topbar-desktop">
   <!-- <div class="topbar-name">Lucie Wang</div> -->
@@ -44,10 +18,10 @@
 </svg>
   <div class="space"></div>
   <div class="topbar-links">
-    <div class="topbar-link active-link" onclick="window.location='/'">About</div>
-    <div class="topbar-link"             onclick="window.location='/resume.html'">Resume</div>
-    <div class="topbar-link"             onclick="window.location='/gallery.html'" >Gallery</div>
-    <div class="topbar-link"             onclick="window.location='/links.html'">Links</div>
+    <div class="topbar-link active-link" data-page="about">About</div>
+    <div class="topbar-link"             data-page="resume">Resume</div>
+    <div class="topbar-link"             data-page="gallery">Gallery</div>
+    <div class="topbar-link"             data-page="links">Links</div>
   </div>
 </div>
 <div class="topbar-mobile">
@@ -73,114 +47,92 @@
 <!-- Mobile drawer -->
   <div class="drawer-backdrop" id="drawerBackdrop">
     <div class="drawer">
-      <div class="mobile-link"   onclick="window.location='/'">About</div>
-      <div class="mobile-link"   onclick="window.location='/resume.html'">Resume</div>
-      <div class="mobile-link"   onclick="window.location='/gallery.html'" >Gallery</div>
-      <div class="mobile-link"   onclick="window.location='/links.html'">Links</div>
+    <div class="mobile-link"  data-page="about">About</div>
+    <div class="mobile-link"  data-page="resume">Resume</div>
+    <div class="mobile-link"  data-page="gallery">Gallery</div>
+    <div class="mobile-link"  data-page="links">Links</div>
     </div>
   </div>
 </div>
-<!-- COPY PASTE ENDS HERE -->
-
-
-
-<!-- Photo Grid -->
-<div class="row"> 
-  <div class="column">
-    <img src="/gallery/1.JPG" style="width:100%"  onload="this.classList.add('loaded')" >
-    <img src="/gallery/2.JPG" style="width:100%"  onload="this.classList.add('loaded')" >
-    <img src="/gallery/11.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-  </div>
-   
-  <div class="column">
-    <img src="/gallery/10.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/gallery/6.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/gallery/8.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/gallery/12.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-  </div>
-  
-  <div class="column">
-    <img src="/gallery/5.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/gallery/4.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/gallery/9.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <!-- <img src="/gallery/7.JPG" style="width:100%"> -->
-  </div> 
-</div>
-<div class="bottom-space"></div>
-</body>
-
 <script>
-   /* Copy paste start css here */
+  /* Copy paste start css here */
+  // Topbar logo animation 
+  function setTextAnimation(delay, duration, strokeWidth, timingFunction, strokeColor,repeat) {
+    let paths = document.querySelectorAll("path");
+    let mode=repeat?'infinite':'forwards'
+    for (let i = 0; i < paths.length; i++) {
+      const path = paths[i];
+      const length = path.getTotalLength();
+      path.style["stroke-dashoffset"] = `${length}px`;
+      path.style["stroke-dasharray"] = `${length}px`;
+      path.style["stroke-width"] = `${strokeWidth}px`;
+      path.style["stroke"] = `${strokeColor}`;
+      path.style["animation"] = `${duration}s svg-text-anim ${mode} ${timingFunction}`;
+      path.style["animation-delay"] = `${i * delay}s`;
+    }
+  }
+  setTimeout(()=>{
+      setTextAnimation(0.1,2.9,1,'linear','#000000',false)
+      document.getElementById('svgGroup').style.opacity = "1"
+      document.getElementById('svgGroup2').style.opacity = "1"
+  },250)
   const navButton = document.getElementById('navbar-button')
   const closeBtn = document.getElementById('navbar-button')
   const backdrop = document.getElementById('drawerBackdrop')
+
+  function fadeIn(el) {
+    el.classList.remove("fade-out");
+    el.style.display = "block"; // make it visible
+    el.classList.add("fade", "fade-in");
+  }
+  function fadeOut(el) {
+    el.classList.remove("fade-in");
+    el.classList.add("fade", "fade-out");
+    // After animation, hide element
+    el.addEventListener("animationend", function handler() {
+      if (el.classList.contains("fade-out")) {
+        el.style.display = "none";
+      }
+      el.removeEventListener("animationend", handler);
+    })
+  }
+
   navButton.addEventListener('click', () => {
-    backdrop.classList.toggle('active');
+    if(backdrop.classList.contains('active')){
+      fadeOut(backdrop)
+    }else{
+      fadeIn(backdrop)
+    }
+    backdrop.classList.toggle('active')
   })
   backdrop.addEventListener('click', (e) => {
     navButton.click()
   })
+  function removeClassFromSiblings(el, className) {
+    const siblings = el.parentElement.children;
+    for (const sib of siblings) {
+      if (sib !== el) {
+        sib.classList.remove(className);
+      }
+    }
+  }
+  $navbar = document.getElementById("navbar");
+  $navbar.addEventListener("click", async (e) => {
+    try{
+      const clicked = document.querySelector(".active-link");
+      clicked.classList.remove('active-link')
+        if (e.target.classList.contains('topbar-link')){
+          e.target.classList.add('active-link')
+        }
+    }catch{
+      // Ignore the undefined error on mobile
+      // The navbar disappears too quick for the classlist to exist
+    }
+  });
   /* Copy paste ends css here */
 </script>
-
-
 <style>
-/* Copy paste start css here */
-* {
-  box-sizing: border-box;
-}
-:root{
-    --base-font-size: 16px;
-    --heading-font-font-family: "Poppins";
-    --heading-font-font-style: normal;
-    --heading-font-font-weight: 500;
-    --heading-font-text-transform: none;
-    --heading-font-letter-spacing: 0em;
-    --heading-font-line-height: 1.4em;
-    --body-font-font-family: "Poppins";
-    --body-font-font-style: normal;
-    --body-font-font-weight: 300;
-    --body-font-text-transform: none;
-    --body-font-letter-spacing: 0em;
-    --body-font-line-height: 1.8em;
-    --meta-font-font-family: "Poppins";
-    --meta-font-font-style: normal;
-    --meta-font-font-weight: 400;
-    --meta-font-text-transform: none;
-    --meta-font-letter-spacing: 0em;
-    --meta-font-line-height: 1.2em;
-    --heading-1-size: 4rem;
-    --heading-1-size-value: 4;
-    --heading-2-size: 2.8rem;
-    --heading-2-size-value: 2.8;
-    --heading-3-size: 2.2rem;
-    --heading-3-size-value: 2.2;
-    --heading-4-size: 1.2rem;
-    --heading-4-size-value: 1.2;
-    --large-text-size: 1.4rem;
-    --large-text-size-value: 1.4;
-    --normal-text-size: 1rem;
-    --normal-text-size-value: 1;
-    --small-text-size: .9rem;
-    --small-text-size-value: .9;
-    --normal-meta-size: 1rem;
-    --normal-meta-size-value: 1;
-}
- html,body{
-  margin     : 0;
-  padding    : 0px;
-  /* height     : auto!important; */
-  overflow-y : scroll; 
-  overflow-x : hidden;
-  max-width  : 100%;
-  width      : 100%;
-  height     : 100%;
-  font-family: "Poppins";
-  font-weight : 300;
-  color       : var(--font-color);
-  /* font-size:  : max(0.75rem, 88%); */
-}
-.topbar-name{
+ .topbar-name{
   font-size: 1.8rem;
   font-style: var(--heading-font-font-style);
   font-weight: 400;
@@ -189,6 +141,13 @@
   align-self: center;
   /* padding: 20px */
 }
+/* Google chrome */
+#svgGroup{
+  opacity: 0;
+}
+#svgGroup2{
+  opacity: 0;
+} 
 @-webkit-keyframes svg-text-anim {
     40% {
       stroke-dashoffset: 0;
@@ -339,54 +298,28 @@
     display: grid;
   }
 }
-/* Copy paste css here */
 
 
 
-/* Css image grid */
-.header {
-  text-align: center;
-  padding: 32px;
+/* wildly cool fade in, mixed with js, chatgpt magic */
+.fade {
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards; /* keep end state */
 }
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 calc(5% - 8px);
-  justify-content: center;
+.fade-in {
+  display: block;               /* make visible */
+  animation-name: fadeIn;
 }
-/* Create four equal columns that sits next to each other */
-.column {
-  flex: 33%;
-  max-width: 33%;
-  padding: 0 4px;
+.fade-out {
+  animation-name: fadeOut;
 }
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
-}
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media (max-width: 800px) {
-  .column {
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .column {
-    flex: 100%;
-    max-width: 100%;
-  }
-}
-img{
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-.loaded {
-  opacity: 1;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
 </style>
-</html>
-
-
