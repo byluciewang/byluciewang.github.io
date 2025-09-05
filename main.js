@@ -1,9 +1,11 @@
 /*
-*  Chatgpt finnessed this framework, it's a small, feature weak, but effective for minimal superpowers
+*  Chatgpt finnessed this framework, it's a small, feature weak, but effective. Mini superpowers
 *  1. Seperate resuable code into indivdual files you can put local css, javascipt and html into
 *  2. Single pagedness + per-refresh caching allows for faster rendering
-*  3. no three, that't it
+*  3. no three, that't it, maybe well add in reactivity/state mangement later
 *
+*  What is this for? Making brocure type websites. This makes it easy to drop in copy paste
+*  code and sratch up and destory features at a whim
 */
 
 let $navbar, $content;
