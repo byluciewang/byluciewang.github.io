@@ -41,6 +41,12 @@ use a uuid at the begining of all scoped styles to come up with unique names for
 uuidgen | cut -c 1-8
 ```
 
+### Annoying git stuff
+This doesn't work at the moment, so if you added a file to git changes to any of the letters capitoliztion doesn't get tracked.
+```
+git config --global core.ignorecase false
+```
+
 ### References
 - [Great tool for name animations](https://akashraj9828.github.io/svg-text-animation-generator/)
 - [Inpsiration for this website](https://www.jomei.com)
