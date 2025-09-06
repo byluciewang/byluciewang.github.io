@@ -1,0 +1,50 @@
+<div class="row"> 
+  <div class="column">
+    <img class="resume" src="/assets/Resume_page_2.jpg" style="width:100%"  onload="this.classList.add('loaded')" >
+  </div>
+  <div class="column">
+    <img class="resume" src="/assets/Resume_page_1.jpg" style="width:100%"  onload="this.classList.add('loaded')" >
+  </div>
+</div>
+<style>
+.resume{
+  box-shadow: 0px 2px 2px 2px rgba(0,0,0,.1);
+}
+.header {
+  text-align: center;
+  padding: 32px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 calc(5% - 16px);
+  justify-content: center;
+  padding: 8px 8px;
+  background-color: whitesmoke;
+  box-shadow: 0px 4px 4px 20px whitesmoke;
+}
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  max-width: 50%;
+  padding: 0 8px;
+}
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+@media (max-width: 1200px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+    padding: 8px 8px;
+  }
+}
+img{
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.loaded {
+  opacity: 1;
+}
+</style>
