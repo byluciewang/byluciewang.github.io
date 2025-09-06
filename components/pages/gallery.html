@@ -1,58 +1,105 @@
-<div class="row"> 
-  <div class="column">
-    <img src="/assets/gallery/1.JPG" style="width:100%"  onload="this.classList.add('loaded')" >
-    <img src="/assets/gallery/2.JPG" style="width:100%"  onload="this.classList.add('loaded')" >
-    <img src="/assets/gallery/11.JPG" style="width:100%" onload="this.classList.add('loaded')" >
+<div id="A764AE67-gallery" class="A764AE67-row"> 
+  <div class="A764AE67-column">
+    <img data-src="/assets/gallery/1.JPG" style="width:100%"  onload="this.classList.add('loaded')" >
+    <img data-src="/assets/gallery/2.JPG" style="width:100%"  onload="this.classList.add('loaded')" >
+    <img data-src="/assets/gallery/11.JPG" style="width:100%" onload="this.classList.add('loaded')" >
   </div>
    
-  <div class="column">
-    <img src="/assets/gallery/14.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/assets/gallery/6.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/assets/gallery/8.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/assets/gallery/12.JPG" style="width:100%" onload="this.classList.add('loaded')" >
+  <div class="A764AE67-column">
+    <img data-src="/assets/gallery/6.JPG" style="width:100%" onload="this.classList.add('loaded')" >
+    <img data-src="/assets/gallery/8.JPG" style="width:100%" onload="this.classList.add('loaded')" >
+    <img data-src="/assets/gallery/12.JPG" style="width:100%" onload="this.classList.add('loaded')" >
   </div>
   
-  <div class="column">
-    <img src="/assets/gallery/5.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/assets/gallery/4.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/assets/gallery/9.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-    <img src="/assets/gallery/13.JPG" style="width:100%" onload="this.classList.add('loaded')" >
-
+  <div class="A764AE67-column">
+    <img data-src="/assets/gallery/5.JPG" style="width:100%" onload="this.classList.add('loaded')" >
+    <img data-src="/assets/gallery/4.JPG" style="width:100%" onload="this.classList.add('loaded')" >
+    <img data-src="/assets/gallery/9.JPG" style="width:100%" onload="this.classList.add('loaded')" >
+    <img data-src="/assets/gallery/13.JPG" style="width:100%" onload="this.classList.add('loaded')" >
     <!-- <img src="/assets/gallery/7.JPG" style="width:100%"> -->
   </div> 
 </div>
 
+<script>
+  // const UUID = "A764AE67"
+  // const gallery = document.getElementById("A764AE67-gallery")
+  function hydrateImage(img, delay) {
+    setTimeout(() => {
+      const src = img.getAttribute("data-src");
+
+      // prefetch
+      const link = document.createElement("link");
+      link.rel = "prefetch";
+      link.href = src;
+      link.as = "image";
+      document.head.appendChild(link);
+
+      // load
+      img.onload = () => img.classList.add("loaded");
+      img.src = src;
+    }, delay);
+  }
+
+  function hydrateByRow(rowDelay = 1000, imgDelay = 300) {
+    const gallery = document.getElementById("A764AE67-gallery");
+
+    const maxRowLength = Math.max(
+      ...Array.from(gallery.querySelectorAll(".A764AE67-column"))
+             .map(col => col.querySelectorAll("img").length)
+    );
+
+    for (let rowIndex = 0; rowIndex < maxRowLength; rowIndex++) {
+      setTimeout(() => {
+        // grab the "row" across all columns
+        const rowImgs = [];
+        gallery.querySelectorAll(".A764AE67-column").forEach(col => {
+          const imgs = col.querySelectorAll("img");
+          if (imgs[rowIndex]) rowImgs.push(imgs[rowIndex]);
+        });
+
+        // hydrate each image in the row with stagger
+        rowImgs.forEach((img, i) => {
+          hydrateImage(img, i * imgDelay);
+        });
+      }, rowIndex * rowDelay);
+    }
+  }
+
+  // run with 1s delay between rows and 300ms stagger per image in a row
+  hydrateByRow(1000, 300);
+</script>
 <style>
-.header {
-  text-align: center;
-  padding: 32px;
-}
-.row {
+.A764AE67-row {
   display: flex;
   flex-wrap: wrap;
   padding: 0 calc(5% - 8px);
   justify-content: center;
 }
 /* Create four equal columns that sits next to each other */
-.column {
+.A764AE67-column {
   flex: 33%;
   max-width: 33%;
   padding: 0 4px;
 }
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
+.A764AE67-column img {
+  padding-top: 8px;
+  /* margin-top: 8px; */
+  align-self: flex-start;
+  /* background-color: #e0e0e0;   */
+  /* min-height: 150px;       */
+  display: block;
+  /* border: 1px solid red; */
 }
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media (max-width: 800px) {
-  .column {
+  .A764AE67-column {
     flex: 50%;
     max-width: 50%;
   }
 }
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media (max-width: 600px) {
-  .column {
+  .A764AE67-column {
     flex: 100%;
     max-width: 100%;
   }
