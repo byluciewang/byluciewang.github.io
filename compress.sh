@@ -27,15 +27,15 @@ checkDirectries(){
     fi
 }
 
-rename(){
-  cnt=1
-  for fname in $1/*
-  do
-    cp "$fname" "$2/$cnt.jpg"
-    cnt=$(( $cnt + 1 ))
-    echo "copying $fname to $2/$cnt.jpg..."
-  done
-}
+# rename(){
+#   cnt=1
+#   for fname in $1/*
+#   do
+#     mv "$fname" "$2/$cnt.jpg"
+#     cnt=$(( $cnt + 1 ))
+#     echo "copying $fname to $2/$cnt.jpg..."
+#   done
+# }
 
 compressFiles(){
   files=`ls $1 |  grep -iE ".*.(JPG|JPEG|jpg|jpeg)"`
@@ -44,7 +44,7 @@ compressFiles(){
       # ffmpeg -y -i $1/$file -q:v 10 $2/$file -hide_banner -loglevel error
       #convert $1/$file -interlace plane $2/$file
       #jpegtran -copy none -progressive -outfile "$2/$file" "$1/$file" 
-      ffmpeg -y -i "$1/$file" -q:v 10 "$2/$file"
+      ffmpeg -y -i "$1/$file" -q:v 10 "$2/$file" -loglevel error
       # convert -strip -interlace plane -quality 10 s_$file c_$file
   done
 }
@@ -52,7 +52,7 @@ compressFiles(){
 echo ""
 checkDirectries $FROM $TO 
 echo ""
-rename $FROM $FROM
+# rename $FROM $FROM
 compressFiles $FROM $TO
 echo ""
 echo "Done!"
