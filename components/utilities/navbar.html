@@ -1,5 +1,5 @@
-   <!-- Hamburger -->
-    <link href="/assets/hamburgers.css" rel="stylesheet">
+<!-- Hamburger -->
+<link href="/assets/hamburgers.css" rel="stylesheet">
 <!-- topbar -->
 <div class="topbar-desktop">
   <!-- <div class="topbar-name">Lucie Wang</div> -->
@@ -21,7 +21,7 @@
     <div class="topbar-link active-link" data-page="about">About</div>
     <div class="topbar-link"             data-page="resume">Resume</div>
     <div class="topbar-link"             data-page="gallery">Gallery</div>
-    <div class="topbar-link"             data-page="links">Links</div>
+    <div class="topbar-link"             data-page="contact">Contact</div>
   </div>
 </div>
 <div class="topbar-mobile">
@@ -50,7 +50,7 @@
     <div class="mobile-link"  data-page="about">About</div>
     <div class="mobile-link"  data-page="resume">Resume</div>
     <div class="mobile-link"  data-page="gallery">Gallery</div>
-    <div class="mobile-link"  data-page="links">Links</div>
+    <div class="mobile-link"  data-page="contact">Contact</div>
     </div>
   </div>
 </div>
@@ -129,7 +129,18 @@
       // The navbar disappears too quick for the classlist to exist
     }
   });
-  /* Copy paste ends css here */
+
+  // First load update the active page
+  let path = document.location.pathname.split('/').filter(Boolean).pop() || 'home'
+  const navbar = document.getElementById('navbar')
+  const links  = navbar.querySelectorAll('[data-page]')
+  links.forEach(link => {
+  if (link.dataset.page === path || link.textContent.trim().toLowerCase() === path.toLowerCase()) {
+      link.classList.add('active-link')
+    } else {
+      link.classList.remove('active-link')
+    }
+  })
 </script>
 <style>
  .topbar-name{

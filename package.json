@@ -1,0 +1,23 @@
+{
+  "name": "byluciewang.github.io",
+  "version": "1.0.0",
+  "description": "Lucie Wangs website",
+  "homepage": "https://github.com/byluciewang/byluciewang.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/byluciewang/byluciewang.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byluciewang/byluciewang.github.io.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
