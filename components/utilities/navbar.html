@@ -119,12 +119,13 @@
   $navbar = document.getElementById("navbar");
   $navbar.addEventListener("click", async (e) => {
     try{
-      const clicked = document.querySelector(".active-link");
-      clicked.classList.remove('active-link')
-        if (e.target.classList.contains('topbar-link')){
-          e.target.classList.add('active-link')
-        }
-    }catch{
+      const clicked = document.querySelector(".active-link")
+      clicked?.classList?.remove('active-link')
+      if (e.target.classList.contains('topbar-link')){
+        e.target.classList.add('active-link')
+      }
+    }catch(err){
+      console.log(err)
       // Ignore the undefined error on mobile
       // The navbar disappears too quick for the classlist to exist
     }
