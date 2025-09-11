@@ -8,12 +8,13 @@
 *  code and sratch up and destory features at a whim
 */
 
-let $navbar, $content;
+let $navbar, $content, $footer;
 const htmlCache = new Map();
 
 document.addEventListener("DOMContentLoaded", async () => {
   $navbar = document.getElementById("navbar");
   $content = document.getElementById("content");
+  $footer = document.getElementById("footer");
 
   if (!$navbar || !$content) {
     console.error("Missing #navbar or #content in index.html");
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Load navbar
   await loadHTML($navbar, "/components/utilities/navbar.html");
+  await loadHTML($footer, "/components/utilities/footer.html");
 
   // Handle nav clicks (intercept)
   $navbar.addEventListener("click", async (e) => {
